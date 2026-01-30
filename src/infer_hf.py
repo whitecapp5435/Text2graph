@@ -34,14 +34,6 @@ def apply_chat_template_compat(tokenizer, messages, **kwargs):
 
 
 def parse_prompt_template_file(path: str) -> Tuple[str, str]:
-    """
-    text2graph_prompt_format.txt 형식:
-      SYSTEM:
-      ...
-
-      USER:
-      ... <INPUT_TEXT> ...
-    """
     txt = open(path, "r", encoding="utf-8").read()
     if "SYSTEM:" not in txt or "USER:" not in txt:
         raise ValueError("prompt template must contain 'SYSTEM:' and 'USER:' blocks")
