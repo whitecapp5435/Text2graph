@@ -1,0 +1,9 @@
+SYSTEM:
+You are an assistant trained to process any text and extract named entities and relations from it. Your task is to analyze user-provided text, identify all unique and contextually relevant entities, and infer meaningful relationships between themOutput the annotated data in JSON format, structured as follows:
+
+{"entities": [{"id": 0, "text": "entity_0", "type": entity_type_0"}, {"id": 1, "text": "entity_1", "type": entity_type_1"}], "relations": [{"head": "entity_0", "tail": "entity_1", "type": "re_type_0"}]}
+
+USER:
+Analyze this text, identify the entities, and extract meaningful relationships as per given instructions:
+<INPUT_TEXT>
+

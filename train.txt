@@ -1,0 +1,353 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2026.1.4: Fast Qwen3 patching. Transformers: 4.57.3.
+   \\   /|    NVIDIA A100-SXM4-80GB. Num GPUs = 1. Max memory: 79.251 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.10.0+cu128. CUDA: 8.0. CUDA Toolkit: 12.8. Triton: 3.6.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.34. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Unsloth 2026.1.4 patched 28 layers with 28 QKV layers, 28 O layers and 28 MLP layers.
+[accelerate.utils.other|WARNING]Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+The model is already on multiple devices. Skipping the move to device specified in `args`.
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs used = 1
+   \\   /|    Num examples = 9,241 | Num Epochs = 2 | Total steps = 9,242
+O^O/ \_/ \    Batch size per device = 2 | Gradient accumulation steps = 1
+\        /    Data Parallel GPUs = 1 | Total batch size (2 x 1 x 1) = 2
+ "-____-"     Trainable parameters = 20,185,088 of 616,235,008 (3.28% trained)
+  0%|          | 0/9242 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/scratch/jpark284/open-r1-text2graph/src/train_supervised.py", line 408, in <module>
+    main(args)
+  File "/scratch/jpark284/open-r1-text2graph/src/train_supervised.py", line 364, in main
+    trainer.train()
+  File "/scratch/jpark284/open-r1-text2graph/unsloth_compiled_cache/UnslothSFTTrainer.py", line 64, in wrapper
+    output = f(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 330, in _fast_inner_training_loop
+  File "/scratch/jpark284/open-r1-text2graph/unsloth_compiled_cache/UnslothSFTTrainer.py", line 1218, in training_step
+    return super().training_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 40, in _unsloth_training_step
+  File "/scratch/jpark284/open-r1-text2graph/unsloth_compiled_cache/UnslothSFTTrainer.py", line 1207, in compute_loss
+    outputs = super().compute_loss(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth/models/_utils.py", line 1661, in _unsloth_pre_compute_loss
+    outputs = self._old_compute_loss(model, inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 36, in compute_loss
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_compile.py", line 54, in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth/models/llama.py", line 1545, in PeftModel_fast_forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/peft/tuners/tuners_utils.py", line 311, in forward
+    return self.model.forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth/models/llama.py", line 1421, in _CausalLM_fast_forward
+    loss = unsloth_fused_ce_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth_zoo/fused_losses/cross_entropy_loss.py", line 376, in unsloth_fused_ce_loss
+    return apply_autograd_function(UnslothFusedLoss, dict(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth_zoo/fused_losses/cross_entropy_loss.py", line 46, in apply_autograd_function
+    return getattr(autograd, "apply")(*(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/autograd/function.py", line 583, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth_zoo/fused_losses/cross_entropy_loss.py", line 314, in forward
+    accumulate_chunk(
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 953, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 2202, in __call__
+    result = self._torchdynamo_orig_backend(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 707, in __call__
+    result = _compile(
+             ^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1752, in _compile
+    guarded_code, tracer_output = compile_inner(code, one_graph, hooks)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_utils_internal.py", line 97, in wrapper_function
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1433, in compile_inner
+    return _compile_inner(code, one_graph, hooks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1467, in _compile_inner
+    dynamo_output = compile_frame(
+                    ^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1341, in compile_frame
+    bytecode, tracer_output = transform_code_object(code, transform)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/bytecode_transformation.py", line 1600, in transform_code_object
+    tracer_output = transformations(instructions, code_options)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1313, in transform
+    tracer_output = trace_frame(
+                    ^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 328, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 838, in trace_frame
+    run_tracer()
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 819, in run_tracer
+    tracer.run()
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1654, in run
+    while self.step():
+          ^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1334, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 866, in wrapper
+    return inner_fn(self, inst)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 2582, in CALL_FUNCTION_EX
+    self.call_function(fn, argsvars.items, kwargsvars)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1240, in call_function
+    self.push(fn.call_function(self, args, kwargs))  # type: ignore[arg-type]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 401, in call_function
+    return tx.inline_user_function_return(self, [*self.self_args(), *args], kwargs)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1262, in inline_user_function_return
+    return InliningInstructionTranslator.inline_call(self, fn, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4718, in inline_call
+    return tracer.inline_call_()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4935, in inline_call_
+    self.run()
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1654, in run
+    while self.step():
+          ^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1334, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 866, in wrapper
+    return inner_fn(self, inst)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 3807, in CALL
+    self._call(inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 3798, in _call
+    self.call_function(fn, args, kwargs)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1240, in call_function
+    self.push(fn.call_function(self, args, kwargs))  # type: ignore[arg-type]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/lazy.py", line 229, in realize_and_forward
+    return getattr(self.realize(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 685, in call_function
+    return super().call_function(tx, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 401, in call_function
+    return tx.inline_user_function_return(self, [*self.self_args(), *args], kwargs)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1262, in inline_user_function_return
+    return InliningInstructionTranslator.inline_call(self, fn, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4718, in inline_call
+    return tracer.inline_call_()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4935, in inline_call_
+    self.run()
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1654, in run
+    while self.step():
+          ^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1334, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 866, in wrapper
+    return inner_fn(self, inst)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 2582, in CALL_FUNCTION_EX
+    self.call_function(fn, argsvars.items, kwargsvars)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1240, in call_function
+    self.push(fn.call_function(self, args, kwargs))  # type: ignore[arg-type]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/lazy.py", line 229, in realize_and_forward
+    return getattr(self.realize(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 685, in call_function
+    return super().call_function(tx, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 401, in call_function
+    return tx.inline_user_function_return(self, [*self.self_args(), *args], kwargs)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1262, in inline_user_function_return
+    return InliningInstructionTranslator.inline_call(self, fn, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4718, in inline_call
+    return tracer.inline_call_()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4935, in inline_call_
+    self.run()
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1654, in run
+    while self.step():
+          ^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1334, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 866, in wrapper
+    return inner_fn(self, inst)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 2582, in CALL_FUNCTION_EX
+    self.call_function(fn, argsvars.items, kwargsvars)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1240, in call_function
+    self.push(fn.call_function(self, args, kwargs))  # type: ignore[arg-type]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 685, in call_function
+    return super().call_function(tx, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py", line 401, in call_function
+    return tx.inline_user_function_return(self, [*self.self_args(), *args], kwargs)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1262, in inline_user_function_return
+    return InliningInstructionTranslator.inline_call(self, fn, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4718, in inline_call
+    return tracer.inline_call_()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4935, in inline_call_
+    self.run()
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1654, in run
+    while self.step():
+          ^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1334, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 866, in wrapper
+    return inner_fn(self, inst)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 3807, in CALL
+    self._call(inst)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 3798, in _call
+    self.call_function(fn, args, kwargs)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1240, in call_function
+    self.push(fn.call_function(self, args, kwargs))  # type: ignore[arg-type]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/lazy.py", line 229, in realize_and_forward
+    return getattr(self.realize(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/torch.py", line 1596, in call_function
+    tensor_variable = wrap_fx_proxy(
+                      ^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/builder.py", line 2795, in wrap_fx_proxy
+    return wrap_fx_proxy_cls(target_cls=TensorVariable, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/builder.py", line 2861, in wrap_fx_proxy_cls
+    out = _wrap_fx_proxy(
+          ^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/variables/builder.py", line 2972, in _wrap_fx_proxy
+    example_value = get_fake_value(proxy.node, tx, allow_non_graph_fake=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 3626, in get_fake_value
+    raise TorchRuntimeError(msg).with_traceback(e.__traceback__) from None
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 3524, in get_fake_value
+    ret_val = wrap_fake_exception(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 2966, in wrap_fake_exception
+    return fn()
+           ^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 3525, in <lambda>
+    lambda: run_node(tx.output, node, args, kwargs, nnmodule)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 3735, in run_node
+    raise RuntimeError(make_error_message(e)).with_traceback(
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_dynamo/utils.py", line 3694, in run_node
+    return node.target(*args, **kwargs)  # type: ignore[operator]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/nn/functional.py", line 3504, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/utils/_stats.py", line 29, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1397, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 2155, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1544, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 2707, in _dispatch_impl
+    decomposition_table[func](*args, **kwargs)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_decomp/__init__.py", line 113, in _fn
+    return f(*args, **kwargs, out=None if is_none else out_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_prims_common/wrappers.py", line 315, in _fn
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_decomp/decompositions.py", line 4179, in nll_loss_forward
+    return _nll_loss_forward(self, target, weight, reduction, ignore_index)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_decomp/decompositions.py", line 4143, in _nll_loss_forward
+    total_weight = (target != ignore_index).sum().to(self)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/etc/python/sitecustomize.py", line 281, in to_wrapped
+    if dest and any(acc in str(dest).lower() for acc in ["cuda", "hip", "hpu"]):
+       ^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/utils/_stats.py", line 29, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1397, in __torch_dispatch__
+    return self.dispatch(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 2155, in dispatch
+    return self._cached_dispatch_impl(func, types, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 1544, in _cached_dispatch_impl
+    output = self._dispatch_impl(func, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_subclasses/fake_tensor.py", line 2712, in _dispatch_impl
+    r = func.decompose(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_ops.py", line 864, in decompose
+    return self._op_dk(dk, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch._dynamo.exc.TorchRuntimeError: Dynamo failed to run FX node with fake tensors: call_function <function cross_entropy at 0x155408360e00>(*(), **{'input': GradTrackingTensor(lvl=1, value=
+    FakeTensor(..., device='cuda:0', size=(s31, 151936))
+), 'target': GradTrackingTensor(lvl=1, value=
+    FakeTensor(..., device='cuda:0', size=(s31,), dtype=torch.int64)
+), 'reduction': 'sum'}): got RuntimeError('Cannot call numel() on tensor with symbolic sizes/strides\nException raised from throw_cannot_call_with_symbolic at /pytorch/c10/core/TensorImpl.cpp:289 (most recent call first):\nframe #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x155409dc2fdd in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libc10.so)\nframe #1: c10::TensorImpl::throw_cannot_call_with_symbolic(char const*) const + 0x8b (0x155409d56e6b in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libc10.so)\nframe #2: c10::TensorImpl::numel_custom() const + 0x9c (0x155409d9c4fc in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libc10.so)\nframe #3: at::native::is_nonzero(at::Tensor const&) + 0x12b (0x1554497c61cb in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #4: <unknown function> + 0x32f292c (0x15544a81092c in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #5: <unknown function> + 0xb19781 (0x15545d4e6781 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #6: <unknown function> + 0xb1372a (0x15545d4e072a in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #7: <unknown function> + 0xb13d68 (0x15545d4e0d68 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #8: <unknown function> + 0xa2258a (0x15545d3ef58a in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #9: <unknown function> + 0x40e440 (0x15545cddb440 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\n<omitting python frames>\nframe #25: <unknown function> + 0xd96a61 (0x15545d763a61 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #26: <unknown function> + 0x77200b (0x15545d13f00b in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #27: <unknown function> + 0x1c289d8 (0x1554491469d8 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #28: <unknown function> + 0x773b5f (0x15545d140b5f in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #29: <unknown function> + 0x28408c6 (0x155449d5e8c6 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #30: at::_ops::is_nonzero::call(at::Tensor const&) + 0x2b5 (0x15544a0244b5 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #31: <unknown function> + 0x461535 (0x15545ce2e535 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #55: <unknown function> + 0xd96a61 (0x15545d763a61 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #56: <unknown function> + 0x77200b (0x15545d13f00b in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #57: <unknown function> + 0x1c289d8 (0x1554491469d8 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #58: <unknown function> + 0x773b5f (0x15545d140b5f in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\nframe #59: at::_ops::nll_loss_forward::redispatch(c10::DispatchKeySet, at::Tensor const&, at::Tensor const&, std::optional<at::Tensor> const&, long, c10::SymInt) + 0x2cc (0x15544a0ecb5c in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #60: <unknown function> + 0x543e94e (0x15544c95c94e in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #61: <unknown function> + 0x543f159 (0x15544c95d159 in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)\nframe #62: <unknown function> + 0x773b5f (0x15545d140b5f in /home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/lib/libtorch_python.so)\n')
+
+from user code:
+   File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth_zoo/fused_losses/cross_entropy_loss.py", line 286, in accumulate_chunk
+    (chunk_loss, (unscaled_loss,)) = torch.func.grad_and_value(
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_functorch/apis.py", line 449, in wrapper
+    return eager_transforms.grad_and_value_impl(
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_functorch/vmap.py", line 48, in fn
+    return f(*args, **kwargs)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/torch/_functorch/eager_transforms.py", line 1365, in grad_and_value_impl
+    output = func(*args, **kwargs)
+  File "/home/jpark284/.conda/envs/pj2-qwen/lib/python3.12/site-packages/unsloth_zoo/fused_losses/cross_entropy_loss.py", line 103, in compute_fused_ce_loss
+    loss = torch.nn.functional.cross_entropy(
+
+Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+
+  0%|          | 0/9242 [00:01<?, ?it/s]
